@@ -1,0 +1,44 @@
+<html>
+<head>
+<script type="text/javascript" src="loader.js"></script>
+<link rel="stylesheet" type="text/css" href="loadergallery.css"></link>
+<script type="text/javascript">
+var canvas, interval, canvascase, gallerycase
+function load(){
+	canvascase=document.body.appendChild(document.createElement('div'))
+	gallerycase=document.body.appendChild(document.createElement('div'))
+	var hash=parseInt(window.location.hash.slice(1)),
+		back=canvascase.appendChild(document.createElement('div'))
+	canvas=canvascase.appendChild(document.createElement('canvas'))
+	canvas.height=window.innerHeight
+	canvas.width=window.innerWidth
+	canvascase.style.display="none"
+	back.classList.add('back')
+	back.setAttribute("onclick","back()")
+	gallerycase.classList.add('gallery')
+	for(var i=0,ele; i<loader.loaders.length; i++){
+		ele=gallerycase.appendChild(document.createElement('div'))
+		ele.classList.add('thumbnail')
+		ele.setAttribute("onclick","display("+i+")")
+		ele.style.backgroundImage='url(thumbnails/'+i+'.png)'
+	}
+	if(hash>=0&&hash<loader.loaders.length) display(hash)
+}
+function back(){
+	gallerycase.style.display=""
+	canvascase.style.display="none"
+	interval.stop()
+	canvas.height=canvas.height
+	window.location.hash=""
+}
+function display(number){
+	gallerycase.style.display="none"
+	canvascase.style.display=""
+	interval=loader.load(canvas,number)
+	window.location.hash="#"+number
+}
+</script>
+<title>loading</title>
+</head>
+<body onload="load()"></body>
+</html>

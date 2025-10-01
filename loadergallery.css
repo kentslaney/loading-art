@@ -1,0 +1,39 @@
+div.back {
+	width: 15px;
+	height: 15px;
+	border: lightgray;
+	border-width: 7px 0 0 7px;
+	border-style: solid;
+	transform: rotateZ(-45deg);
+	margin: 14;
+	position: absolute;
+	top: 0;
+	cursor: pointer;
+}
+div.back:hover {
+	border-color: gray;
+}
+div.thumbnail {
+	width: 180;
+	height: 120;
+	display: inline-block;
+	border: 1px solid black;
+	margin: 10px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-origin: content-box;
+	padding:10;
+	cursor: pointer;
+}
+div.gallery {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	max-width: 1200;
+	margin: 0 auto;
+	padding: 10px;
+}
+body {
+	margin: 0;
+}
